@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Block - Focus & Wellness Coach</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎯</span>
+                <span class="brand-text">Focus & Wellness</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="planner.html" class="nav-link">Planner</a>
+                <a href="timer.html" class="nav-link active">Active Block</a>
+                <a href="breaks.html" class="nav-link">Breaks</a>
+                <a href="review.html" class="nav-link">Review</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">User</span>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="timer-container">
+            <!-- No Active Block State -->
+            <div id="noActiveBlock" class="empty-state-large">
+                <div class="empty-icon-large">⏱️</div>
+                <h2>No Active Block</h2>
+                <p>Start a focus block from the planner to begin your session</p>
+                <a href="planner.html" class="btn-primary">Go to Planner</a>
+            </div>
+
+            <!-- Active Block Container -->
+            <div id="activeBlockContainer" style="display: none;">
+                <!-- Timer Card -->
+                <div class="card timer-card">
+                    <div class="timer-header">
+                        <div class="block-title-section">
+                            <h1 id="activeBlockTitle">Focus Session</h1>
+                            <p class="block-category" id="activeBlockCategory"></p>
+                        </div>
+                        <div class="timer-status" id="timerStatus">Ready to Start</div>
+                    </div>
+
+                    <div class="timer-display">
+                        <div class="time-circle">
+                            <svg class="timer-svg" viewBox="0 0 300 300">
+                                <circle cx="150" cy="150" r="135" class="timer-bg-circle"></circle>
+                                <circle cx="150" cy="150" r="135" class="timer-progress-circle" id="timerCircle"></circle>
+                            </svg>
+                            <div class="time-remaining" id="timeRemaining">25:00</div>
+                        </div>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button class="btn-control btn-start" id="startBtn">
+                            <span class="btn-icon">▶️</span>
+                            <span>Start</span>
+                        </button>
+                        <button class="btn-control btn-pause" id="pauseBtn" style="display: none;">
+                            <span class="btn-icon">⏸️</span>
+                            <span>Pause</span>
+                        </button>
+                        <button class="btn-control btn-stop" id="stopBtn">
+                            <span class="btn-icon">⏹️</span>
+                            <span>End Block</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Protocols Card -->
+                <div class="card protocols-card">
+                    <div class="card-header">
+                        <h2>Protocol Checklist</h2>
+                        <p class="protocols-subtitle">Protocols will unlock at their scheduled times</p>
+                    </div>
+                    <div class="protocols-checklist" id="protocolChecklist">
+                        <!-- Protocol items will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Completion Card (Hidden until block ends) -->
+                <div class="card completion-card" id="completionSection" style="display: none;">
+                    <div class="completion-header">
+                        <div class="completion-icon">🎉</div>
+                        <div>
+                            <h2>Block Completed!</h2>
+                            <p>Great work! Review your protocol completion below:</p>
+                        </div>
+                    </div>
+                    <div class="completion-summary" id="completionSummary"></div>
+                    <button class="btn-primary btn-large" id="submitCompletionBtn">
+                        Save & Return to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protocol Notification Modal -->
+    <div class="protocol-modal" id="protocolModal" style="display: none;">
+        <div class="protocol-modal-overlay" onclick="closeProtocolModal()"></div>
+        <div class="protocol-modal-content">
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">⏰</div>
+                <h2 id="modalTitle">Time for Protocol</h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-protocol-name" id="modalProtocolName"></p>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-timer" id="modalTimer">30s</div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-complete" id="completeProtocolBtn">✓ Mark Complete</button>
+                <button class="btn-modal-skip" id="skipProtocolBtn">Skip</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="common.js"></script>
+    <script src="timer.js"></script>
+</body>
+</html>

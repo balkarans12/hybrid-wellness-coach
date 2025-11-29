@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break Logger - Focus & Wellness Coach</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="breaks.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎯</span>
+                <span class="brand-text">Focus & Wellness</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="planner.html" class="nav-link">Planner</a>
+                <a href="timer.html" class="nav-link">Active Block</a>
+                <a href="breaks.html" class="nav-link active">Breaks</a>
+                <a href="review.html" class="nav-link">Review</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">User</span>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>Break Logger</h1>
+            <p class="page-subtitle">Log your breaks to clear recovery debt and maintain wellness</p>
+        </header>
+
+        <!-- Current Debt Summary -->
+        <div class="current-debt-banner">
+            <div class="debt-banner-header">
+                <h3>⚠️ Current Recovery Debt</h3>
+                <span class="total-debt-indicator" id="totalDebtIndicator">0 Total</span>
+            </div>
+            <div class="debt-indicators">
+                <div class="debt-indicator-item">
+                    <span class="debt-indicator-icon">👁️</span>
+                    <div class="debt-indicator-info">
+                        <span class="debt-indicator-label">Eye</span>
+                        <span class="debt-indicator-value" id="currentEyeDebt">0</span>
+                    </div>
+                </div>
+                <div class="debt-indicator-item">
+                    <span class="debt-indicator-icon">💧</span>
+                    <div class="debt-indicator-info">
+                        <span class="debt-indicator-label">Hydration</span>
+                        <span class="debt-indicator-value" id="currentHydrationDebt">0</span>
+                    </div>
+                </div>
+                <div class="debt-indicator-item">
+                    <span class="debt-indicator-icon">🏃</span>
+                    <div class="debt-indicator-info">
+                        <span class="debt-indicator-label">Mobility</span>
+                        <span class="debt-indicator-value" id="currentMobilityDebt">0</span>
+                    </div>
+                </div>
+                <div class="debt-indicator-item">
+                    <span class="debt-indicator-icon">🪑</span>
+                    <div class="debt-indicator-info">
+                        <span class="debt-indicator-label">Posture</span>
+                        <span class="debt-indicator-value" id="currentPostureDebt">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="breaks-layout">
+            <!-- Left Column: Break Logger Form -->
+            <div class="break-logger-section">
+                <div class="card break-logger-card">
+                    <div class="card-header">
+                        <h2>Log a Break</h2>
+                    </div>
+
+                    <!-- Break Type Selection -->
+                    <div class="form-section">
+                        <label class="form-label">Break Type</label>
+                        <div class="break-type-selector">
+                            <label class="break-type-option">
+                                <input type="radio" name="breakType" value="screen-free" checked>
+                                <div class="break-type-card">
+                                    <span class="break-type-emoji">🌿</span>
+                                    <h3>Screen-Free</h3>
+                                    <p>Away from all screens</p>
+                                    <span class="break-benefit">1 debt per 60 min</span>
+                                </div>
+                            </label>
+                            <label class="break-type-option">
+                                <input type="radio" name="breakType" value="on-screen">
+                                <div class="break-type-card">
+                                    <span class="break-type-emoji">💻</span>
+                                    <h3>On-Screen</h3>
+                                    <p>Relaxed screen time</p>
+                                    <span class="break-benefit">1 debt per 120 min</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Duration Selection -->
+                    <div class="form-section">
+                        <label class="form-label">Duration (Minimum 60 minutes)</label>
+                        <div class="duration-chips">
+                            <button class="duration-chip" data-duration="60">60 min</button>
+                            <button class="duration-chip" data-duration="90">90 min</button>
+                            <button class="duration-chip" data-duration="120">120 min</button>
+                            <button class="duration-chip" data-duration="150">150 min</button>
+                            <button class="duration-chip" data-duration="180">180 min</button>
+                        </div>
+                        <input type="number" id="customBreakDuration" class="form-input" placeholder="Or enter custom duration (60-300 minutes)" min="60" max="300">
+                    </div>
+
+                    <!-- Recovery Activities -->
+                    <div class="form-section">
+                        <label class="form-label">Recovery Activities</label>
+                        <p class="help-text">Select activities you did during this break</p>
+                        <div class="activities-grid">
+                            <label class="activity-option">
+                                <input type="checkbox" id="hydrationCheck">
+                                <div class="activity-card">
+                                    <span class="activity-emoji">💧</span>
+                                    <span class="activity-name">Hydration</span>
+                                    <span class="activity-hint">1 debt per action</span>
+                                </div>
+                            </label>
+                            <label class="activity-option">
+                                <input type="checkbox" id="mobilityCheck">
+                                <div class="activity-card">
+                                    <span class="activity-emoji">🏃</span>
+                                    <span class="activity-name">Mobility</span>
+                                    <span class="activity-hint">1 debt per 20 min</span>
+                                </div>
+                            </label>
+                            <label class="activity-option">
+                                <input type="checkbox" id="postureCheck">
+                                <div class="activity-card">
+                                    <span class="activity-emoji">🪑</span>
+                                    <span class="activity-name">Posture</span>
+                                    <span class="activity-hint">1 debt per action</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Debt Clearance Preview -->
+                    <div class="clearance-preview-section">
+                        <h3 class="preview-title">💡 Debt Clearance Calculator</h3>
+                        <div class="clearance-preview" id="clearanceItems">
+                            <p class="empty-text">Select break duration to see clearance estimate</p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button class="btn-primary btn-large" id="logBreakBtn">
+                        <span>✅</span> Log Break & Clear Debts
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Break History -->
+            <div class="break-history-section">
+                <div class="card break-history-card">
+                    <div class="card-header">
+                        <h2>Today's Breaks</h2>
+                        <span class="break-count-badge" id="breakCount">0 breaks</span>
+                    </div>
+                    <div class="break-history-list" id="breakHistoryList">
+                        <div class="empty-state">
+                            <div class="empty-icon">☕</div>
+                            <p>No breaks logged today</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="common.js"></script>
+    <script src="breaks.js"></script>
+</body>
+</html>

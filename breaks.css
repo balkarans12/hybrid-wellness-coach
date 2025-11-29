@@ -1,0 +1,513 @@
+/* Current Debt Banner - RED THEME */
+.current-debt-banner {
+    background: linear-gradient(135deg, #F44336 0%, #E91E63 100%);
+    color: white;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 32px;
+    box-shadow: 0 8px 20px rgba(244, 67, 54, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.debt-banner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.debt-banner-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.total-debt-indicator {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.debt-indicators {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.debt-indicator-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.debt-indicator-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.debt-indicator-item.time-debt-item {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.debt-indicator-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.debt-indicator-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.debt-indicator-label {
+    font-size: 0.813rem;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+.debt-indicator-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Breaks Page Layout */
+.breaks-layout {
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.break-logger-section {
+    position: sticky;
+    top: 90px;
+}
+
+/* Break Type Selector */
+.break-type-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.break-type-option {
+    cursor: pointer;
+}
+
+.break-type-option input[type="radio"] {
+    display: none;
+}
+
+.break-type-card {
+    background: var(--bg);
+    border: 3px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-height: 180px;
+}
+
+.break-type-option:hover .break-type-card {
+    border-color: var(--primary);
+    background: rgba(33, 150, 243, 0.05);
+}
+
+.break-type-option input[type="radio"]:checked + .break-type-card {
+    background: var(--gradient-blue);
+    border-color: var(--primary);
+    color: white;
+}
+
+.break-type-emoji {
+    font-size: 3rem;
+    margin-bottom: 8px;
+}
+
+.break-type-card h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.break-type-card p {
+    font-size: 0.875rem;
+    margin: 4px 0;
+    opacity: 0.9;
+}
+
+.break-benefit {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100px;
+    font-size: 0.813rem;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.break-type-option input[type="radio"]:checked + .break-type-card .break-benefit {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Duration Chips - Now 5 columns for 60-180 */
+.duration-chips {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.duration-chip {
+    padding: 14px 12px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+}
+
+.duration-chip:hover {
+    border-color: var(--primary);
+    background: rgba(33, 150, 243, 0.05);
+    transform: translateY(-2px);
+}
+
+.duration-chip.selected {
+    background: var(--gradient-blue);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Activities Grid */
+.help-text {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+    margin-top: -4px;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.activity-option {
+    cursor: pointer;
+}
+
+.activity-option input[type="checkbox"] {
+    display: none;
+}
+
+.activity-card {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 12px;
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-height: 130px;
+}
+
+.activity-option:hover .activity-card {
+    border-color: var(--primary);
+    background: rgba(33, 150, 243, 0.05);
+}
+
+.activity-option input[type="checkbox"]:checked + .activity-card {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(139, 195, 74, 0.15) 100%);
+    border-color: var(--success);
+    border-width: 3px;
+}
+
+.activity-emoji {
+    font-size: 2.5rem;
+}
+
+.activity-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.activity-hint {
+    font-size: 0.813rem;
+    color: var(--text-light);
+}
+
+/* Clearance Preview Section */
+.clearance-preview-section {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+}
+
+.preview-title {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.clearance-preview {
+    min-height: 60px;
+}
+
+.empty-text {
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Break History */
+.break-history-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.break-count-badge {
+    background: var(--primary);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.break-history-list {
+    max-height: 700px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.break-history-item {
+    background: var(--bg);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+    transition: var(--transition);
+}
+
+.break-history-item:hover {
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+}
+
+.break-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.break-type {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+.break-time {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.break-duration {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.break-activities {
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.debt-cleared {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--success);
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+/* Scrollbar Styling */
+.break-history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.break-history-list::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 4px;
+}
+
+.break-history-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.break-history-list::-webkit-scrollbar-thumb:hover {
+    background: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .breaks-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .break-logger-section {
+        position: relative;
+        top: 0;
+    }
+
+    .break-history-section {
+        margin-top: 0;
+    }
+    
+    .debt-indicators {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .debt-indicators {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .current-debt-banner {
+        padding: 20px;
+    }
+
+    .debt-indicator-item {
+        padding: 12px;
+    }
+
+    .debt-indicator-icon {
+        font-size: 1.75rem;
+    }
+
+    .debt-indicator-value {
+        font-size: 1.5rem;
+    }
+
+    .break-type-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .break-type-card {
+        min-height: 150px;
+    }
+
+    .duration-chips {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-card {
+        min-height: 100px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 16px;
+    }
+
+    .activity-emoji {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .debt-indicators {
+        grid-template-columns: 1fr;
+    }
+
+    .debt-banner-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .duration-chips {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .duration-chip {
+        padding: 12px 8px;
+        font-size: 0.875rem;
+    }
+
+    .break-type-card {
+        padding: 20px;
+    }
+
+    .break-type-emoji {
+        font-size: 2.5rem;
+    }
+}
+.debt-indicators {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1200px) {
+    .debt-indicators {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .debt-indicators {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .debt-indicators {
+        grid-template-columns: 1fr;
+    }
+}

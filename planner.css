@@ -1,0 +1,615 @@
+/* Planner Layout */
+.planner-layout {
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.block-creator-card {
+    position: sticky;
+    top: 90px;
+}
+
+/* Duration Selector Grid */
+.duration-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.duration-card {
+    background: var(--bg);
+    border: 3px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.duration-card:hover {
+    border-color: var(--primary);
+    background: rgba(33, 150, 243, 0.05);
+    transform: translateY(-2px);
+}
+
+.duration-card.selected {
+    background: var(--gradient-blue);
+    border-color: var(--primary);
+    color: white;
+}
+
+.duration-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--bg-secondary);
+}
+
+.duration-card.disabled:hover {
+    transform: none;
+    border-color: var(--border);
+}
+
+.duration-time {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.duration-unit {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.duration-type {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.custom-duration-wrapper {
+    margin-top: 12px;
+}
+
+/* Protocol Intervals Configuration */
+.protocol-config-section {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    margin-top: 20px;
+}
+
+.help-text {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+}
+
+.protocol-intervals {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.interval-config {
+    background: white;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+}
+
+.interval-config:hover {
+    border-color: var(--primary);
+}
+
+.interval-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.interval-icon {
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.interval-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.interval-info strong {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.interval-info small {
+    font-size: 0.813rem;
+    color: var(--text-light);
+}
+
+.interval-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border);
+    transition: 0.3s;
+    border-radius: 100px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--primary);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(22px);
+}
+
+.interval-select {
+    padding: 8px 12px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: white;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 130px;
+}
+
+.interval-select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.interval-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Protocol Preview */
+.protocol-preview {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(0, 188, 212, 0.1) 100%);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 2px dashed var(--primary);
+}
+
+.protocol-preview h4 {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.preview-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: white;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+}
+
+.preview-time {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 60px;
+}
+
+.preview-protocol {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+}
+
+/* Timeline Styles */
+.timeline-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 24px;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary);
+}
+
+.timeline-marker.done {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.timeline-content {
+    background: var(--bg);
+    padding: 16px;
+    border-radius: var(--radius-md);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.timeline-header h3 {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.timeline-meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.timeline-notes {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.timeline-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-start, .btn-delete {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-start {
+    background: var(--success);
+    color: white;
+}
+
+.btn-start:hover {
+    background: #43A047;
+}
+
+.btn-delete {
+    background: transparent;
+    color: var(--text-light);
+    padding: 8px;
+}
+
+.btn-delete:hover {
+    color: var(--danger);
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.status-badge {
+    padding: 8px 16px;
+    background: var(--success);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .planner-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .block-creator-card {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .duration-selector-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .interval-config {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .interval-controls {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .duration-selector-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .duration-card {
+        padding: 16px 8px;
+    }
+    
+    .duration-time {
+        font-size: 1.5rem;
+    }
+}
+/* Conservative Mode Alert */
+.conservative-mode-alert {
+    background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+    color: white;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.conservative-mode-alert .alert-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.conservative-mode-alert .alert-content {
+    flex: 1;
+}
+
+.conservative-mode-alert h3 {
+    font-size: 1.5rem;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.conservative-mode-alert p {
+    margin: 0 0 16px 0;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.mode-rules {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+.rule-item:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rule-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.btn-break-suggestion {
+    display: inline-block;
+    padding: 12px 24px;
+    background: white;
+    color: var(--warning);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-break-suggestion:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Current Debt Indicator in Card Header */
+.current-debt-indicator {
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--bg);
+    color: var(--text-secondary);
+}
+
+.current-debt-indicator.high {
+    background: var(--danger);
+    color: white;
+}
+
+.current-debt-indicator.moderate {
+    background: var(--warning);
+    color: white;
+}
+
+.current-debt-indicator.low {
+    background: var(--success);
+    color: white;
+}
+
+/* Duration Card States */
+.duration-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--bg),
+        var(--bg) 10px,
+        var(--bg-secondary) 10px,
+        var(--bg-secondary) 20px
+    );
+    position: relative;
+}
+
+.duration-card.locked::after {
+    content: '🔒';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.25rem;
+}
+
+.duration-card.locked:hover {
+    transform: none;
+    border-color: var(--border);
+    background: repeating-linear-gradient(
+        45deg,
+        var(--bg),
+        var(--bg) 10px,
+        var(--bg-secondary) 10px,
+        var(--bg-secondary) 20px
+    );
+}
+
+.duration-status {
+    margin-top: 8px;
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(244, 67, 54, 0.2);
+    color: var(--danger);
+}
+
+/* Custom Duration Hint */
+.custom-duration-hint {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    background: rgba(255, 152, 0, 0.1);
+    border: 2px solid var(--warning);
+    color: var(--text-secondary);
+    display: none;
+}
+
+.custom-duration-hint.show {
+    display: block;
+}
+
+.custom-duration-hint.error {
+    background: rgba(244, 67, 54, 0.1);
+    border-color: var(--danger);
+    color: var(--danger);
+}

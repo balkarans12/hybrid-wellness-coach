@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner - Focus & Wellness Coach</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="planner.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎯</span>
+                <span class="brand-text">Focus & Wellness</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="planner.html" class="nav-link active">Planner</a>
+                <a href="timer.html" class="nav-link">Active Block</a>
+                <a href="breaks.html" class="nav-link">Breaks</a>
+                <a href="review.html" class="nav-link">Review</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">User</span>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>Focus Block Planner</h1>
+            <p class="page-subtitle">Schedule your focused work sessions with customizable wellness protocols</p>
+        </header>
+
+        <!-- Conservative Mode Alert -->
+        <div class="conservative-mode-alert" id="conservativeModeAlert" style="display: none;">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+                <h3>Conservative Mode Active</h3>
+                <p id="conservativeModeMessage"></p>
+                <div class="mode-rules">
+                    <div class="rule-item">
+                        <span class="rule-icon">🔴</span>
+                        <span>Debt ≥10: Only 25-minute blocks allowed</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🟠</span>
+                        <span>Debt 5-9: Maximum 50-minute blocks</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🟡</span>
+                        <span>Debt 3-4: Maximum 90-minute blocks</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🟢</span>
+                        <span>Debt &lt;3: All durations available</span>
+                    </div>
+                </div>
+                <a href="breaks.html" class="btn-break-suggestion">Take a Break to Clear Debt</a>
+            </div>
+        </div>
+
+        <div class="planner-layout">
+            <div class="card block-creator-card">
+                <div class="card-header">
+                    <h2>Create New Block</h2>
+                    <span class="current-debt-indicator" id="currentDebtIndicator">Debt: 0</span>
+                </div>
+                
+                <!-- Step 1: Duration Selection -->
+                <div class="form-section">
+                    <label class="form-label">1. Select Block Duration</label>
+                    <div class="duration-selector-grid">
+                        <button class="duration-card" data-duration="25" id="duration25">
+                            <div class="duration-time">25</div>
+                            <div class="duration-unit">minutes</div>
+                            <div class="duration-type">Quick Sprint</div>
+                            <div class="duration-status" style="display: none;"></div>
+                        </button>
+                        <button class="duration-card" data-duration="50" id="duration50">
+                            <div class="duration-time">50</div>
+                            <div class="duration-unit">minutes</div>
+                            <div class="duration-type">Standard Block</div>
+                            <div class="duration-status" style="display: none;"></div>
+                        </button>
+                        <button class="duration-card" data-duration="90" id="duration90">
+                            <div class="duration-time">90</div>
+                            <div class="duration-unit">minutes</div>
+                            <div class="duration-type">Deep Work</div>
+                            <div class="duration-status" style="display: none;"></div>
+                        </button>
+                        <button class="duration-card custom-card" id="customBtn">
+                            <div class="duration-time">⚙️</div>
+                            <div class="duration-unit">custom</div>
+                            <div class="duration-type">Your Choice</div>
+                            <div class="duration-status" style="display: none;"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="custom-duration-wrapper" id="customDurationWrapper" style="display: none;">
+                        <input type="number" id="customDuration" class="form-input" min="5" max="180" placeholder="Enter custom duration (5-180 minutes)">
+                        <div class="custom-duration-hint" id="customDurationHint"></div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Protocol Interval Configuration -->
+                <div class="form-section protocol-config-section" id="protocolConfigSection" style="display: none;">
+                    <label class="form-label">2. Configure Protocol Intervals</label>
+                    <p class="help-text">Set how often you want to be reminded for wellness protocols</p>
+                    
+                    <div class="protocol-intervals">
+                        <div class="interval-config">
+                            <div class="interval-header">
+                                <span class="interval-icon">👁️</span>
+                                <div class="interval-info">
+                                    <strong>Eye Rest</strong>
+                                    <small>20-20-20 rule: Look away for 20 seconds</small>
+                                </div>
+                            </div>
+                            <div class="interval-controls">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="eyeToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <select id="eyeInterval" class="interval-select">
+                                    <option value="10">Every 10 min</option>
+                                    <option value="15">Every 15 min</option>
+                                    <option value="20" selected>Every 20 min</option>
+                                    <option value="25">Every 25 min</option>
+                                    <option value="30">Every 30 min</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="interval-config">
+                            <div class="interval-header">
+                                <span class="interval-icon">💧</span>
+                                <div class="interval-info">
+                                    <strong>Hydration Break</strong>
+                                    <small>Drink water to stay focused</small>
+                                </div>
+                            </div>
+                            <div class="interval-controls">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="hydrationToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <select id="hydrationInterval" class="interval-select">
+                                    <option value="15">Every 15 min</option>
+                                    <option value="20">Every 20 min</option>
+                                    <option value="25">Every 25 min</option>
+                                    <option value="30" selected>Every 30 min</option>
+                                    <option value="45">Every 45 min</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="interval-config">
+                            <div class="interval-header">
+                                <span class="interval-icon">🏃</span>
+                                <div class="interval-info">
+                                    <strong>Mobility & Stretch</strong>
+                                    <small>Stand up and move your body</small>
+                                </div>
+                            </div>
+                            <div class="interval-controls">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="mobilityToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <select id="mobilityInterval" class="interval-select">
+                                    <option value="20">Every 20 min</option>
+                                    <option value="30">Every 30 min</option>
+                                    <option value="40" selected>Every 40 min</option>
+                                    <option value="50">Every 50 min</option>
+                                    <option value="60">Every 60 min</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="interval-config">
+                            <div class="interval-header">
+                                <span class="interval-icon">🪑</span>
+                                <div class="interval-info">
+                                    <strong>Posture Check</strong>
+                                    <small>Adjust your sitting position</small>
+                                </div>
+                            </div>
+                            <div class="interval-controls">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="postureToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <select id="postureInterval" class="interval-select">
+                                    <option value="15">Every 15 min</option>
+                                    <option value="20">Every 20 min</option>
+                                    <option value="25" selected>Every 25 min</option>
+                                    <option value="30">Every 30 min</option>
+                                    <option value="45">Every 45 min</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="protocol-preview" id="protocolPreview">
+                        <!-- Preview will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Block Details -->
+                <div class="form-section" id="blockDetailsSection" style="display: none;">
+                    <label class="form-label">3. Block Details</label>
+                    <input type="text" id="blockCategory" class="form-input" placeholder="Category (e.g., Study, Coding, Writing)">
+                    <textarea id="blockNotes" class="form-textarea" rows="3" placeholder="Add notes about this session (optional)"></textarea>
+                </div>
+
+                <button class="btn-primary btn-large" id="createBlockBtn" style="display: none;">
+                    <span>➕</span> Create Block
+                </button>
+            </div>
+
+            <div class="blocks-timeline">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Today's Schedule</h2>
+                        <span class="schedule-date" id="scheduleDate"></span>
+                    </div>
+                    <div class="timeline-container" id="blocksList">
+                        <div class="empty-state">
+                            <div class="empty-icon">📅</div>
+                            <p>No blocks scheduled yet</p>
+                            <small>Create your first focus block</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="common.js"></script>
+    <script src="planner.js"></script>
+</body>
+</html>
